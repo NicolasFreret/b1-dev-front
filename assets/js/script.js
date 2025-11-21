@@ -564,21 +564,22 @@ console.log(saluer('Lou'))
     logo.style = 'text-align:center;font-weight:bold;'
     logo.innerHTML = ""
     logo.append('Temps Restant',p)
-    const chronoContainer = document.querySelector('#monChrono')
+    
 
     let interval = setInterval(() => {
-        i--
-        chronoContainer.innerText = i
+        
+        p.innerText = i
         if(i <=  0){
             clearInterval(interval)
-            setTimeout(()=>{alert('Temps écoulé !')},1000)
+            alert('Fin du jeu')
         }
+        i--
     }, 1000);
 
 
  }
 
- setChrono()
+ setChrono(25)
     
 
 
