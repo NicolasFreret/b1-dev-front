@@ -80,7 +80,7 @@ const eleves = [
 ];
 
 
-console.log(eleves)
+
 
 
 
@@ -420,6 +420,28 @@ updatedAt: "2025-11-20T10:36:31.000Z"
 }
 ]
 
+// const afficheMoi = _array => {
+
+// }
+
+/**
+ * Sert à afficher toutes les propriété d'un tableau
+ * 
+ * @param {Array} _array Tableau à parcourir
+ * @param {String} _prop Propriété à récupérer
+ * @returns {void}
+ */
+function afficheMoi(_array = [],_prop){
+    if(typeof(_array) !== 'object') return
+    if(!_array.length) return
+
+    for (let index = 0; index < _array.length; index++) {
+         console.log(_array[index][_prop])
+    }
+}
+
+//afficheMoi(users,'password')
+
 eleves[1].notes[5] = 20
 eleves[1].promo = 'B1'
 
@@ -427,7 +449,7 @@ const isPremium = true
 
 
 // for (let i = 0; i < users.length ; i++) {
-//     if( i != 0 && i%5 === 0 && i%3 === 0) console.log(i, users[i].name)  
+//     if( i !== 0) console.log(i, users[i].name)  
 //     if(!isPremium) users[index].email = "Disponible en version payante";
 // }
 
@@ -447,5 +469,119 @@ const isPremium = true
 //console.log(users)
 
 //console.log(users[ users.length - 1 ].name, users.length)
+
+
+const header = document.querySelector('header')
+const nav = header.querySelector('nav')
+
+
+const a = document.createElement('a')
+a.innerText = "Mon lien"
+//a.setAttribute('href','https://www.mydigitalschool.com/')
+a.href = "https://www.mydigitalschool.com/"
+nav.append(a)
+
+const liens = nav.querySelectorAll('a')
+liens[1].innerText = "Prendre autre chose"
+liens[4].innerText = "Contactez moi"
+
+// let p = 0
+// let interval = setInterval(()=>{
+//     const m = p % 2 === 0 ? "Titre de ma page" : "Nouveau message..."
+//     document.title = m
+//     p++
+//     if(p > 4) clearInterval(interval)
+// },2000)
+
+// saluer('Sam')
+// saluer('Nicolas')
+// saluer('Yohann')
+// saluer('Atenea')
+// saluer()
+
+
+function repeat(_mot,_nbDeFois = 1){
+    for (let index = 0; index < _nbDeFois; index++) {
+        console.log(_mot+' '+index)   
+    }
+}
+
+//repeat('bonjour',52)
+
+
+const coucou2 = function(){
+    console.log('je suis la function 2')
+}
+
+const coucou3 = (nom, age) => {console.log(`Salut ${nom}, tu as ${age} ans`)}
+
+
+/**
+ * Sert à saluer les gens
+ * 
+ * @param {?String} nom (optionnel) nom a saluer (par défaut 'Grand Maitre')
+ * @returns {String}
+ */
+function saluer(nom = 'Grand Maitre'){
+    return `Salut ${nom}`
+    console.log('kkkkkkkkkkkk')
+}
+
+function saluer2(){
+    const nom = prompt('Ton petit nom....')
+    return `Salut ${nom}`
+   
+}
+
+
+console.log(saluer('Lou'))
+
+//coucou3('Jean', 25)
+//coucou2()
+
+
+
+
+
+
+
+    liens.forEach(function(lien,i){
+        lien.innerText = `coucou ${i}`
+        lien.href = "https://www.mydigitalschool.com/"
+    })
+
+    //document.querySelector('main').innerHTML = " coucou"
+
+
+ function setChrono(_startTime = 10){
+    const header = document.querySelector('header'),
+    logo = header.querySelector('.logo'),
+    p = document.createElement('p')
+
+    let i = _startTime
+    p.id="monChrono"
+    p.innerText = _startTime
+    logo.style = 'text-align:center;font-weight:bold;'
+    logo.innerHTML = ""
+    logo.append('Temps Restant',p)
+    const chronoContainer = document.querySelector('#monChrono')
+
+    let interval = setInterval(() => {
+        i--
+        chronoContainer.innerText = i
+        if(i <=  0){
+            clearInterval(interval)
+            setTimeout(()=>{alert('Temps écoulé !')},1000)
+        }
+    }, 1000);
+
+
+ }
+
+ setChrono()
+    
+
+
+//console.log(nav)
 
 
