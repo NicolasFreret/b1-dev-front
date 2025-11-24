@@ -30,11 +30,25 @@ body{
     line-height: 3.2rem;
     font-weight: 500;
     color:var(--black);
+    overflow-x: hidden;
+
 }
+
+/* .ball{
+    height: 600px;
+    position: absolute;
+    z-index: 9999;
+    bottom: -300px;
+    right:-300px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    background-color: red;
+} */
 
 section{
     padding: 3%;
     position: relative;
+   
 }
 
 img,
@@ -46,6 +60,9 @@ video{
 
 a{
     text-decoration: none;
+    &:hover{
+        cursor: none;
+    }
 }
 
 li{
@@ -240,6 +257,32 @@ h1{
     /* padding:1rem 3rem 2rem */
 }
 
+#cursor{
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background-color: #1A2B40;
+    z-index: 99999999999999999;
+    top:0;
+    left:0;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    transition: width .3s ease,
+    height .3s ease,
+    opacity .3s ease,
+    top .1s linear,
+    left .1s linear;
+
+
+}
+
+body:has(a:hover) #cursor{
+    width: 30px;
+    height: 30px;
+    opacity: .5;
+}
+
 
 /*********************************************************/
 
@@ -289,7 +332,8 @@ header nav a::after{
     transition: left .3s ease;
 }
 
-header nav a:hover::after{
+header nav a:hover::after,
+header nav a.active::after{
     left:0;
 }
 

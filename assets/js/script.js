@@ -470,6 +470,17 @@ const isPremium = true
 
 //console.log(users[ users.length - 1 ].name, users.length)
 
+// let r = "mkmk"
+
+
+// if (1==1){
+//     let r2 = "coucou"
+//     console.log(r,r2)
+
+// }
+
+//console.log(r,r2)
+
 
 const header = document.querySelector('header')
 const nav = header.querySelector('nav')
@@ -554,6 +565,7 @@ console.log(saluer('Lou'))
 
 
  function setChrono(_startTime = 10){
+    let r = "mkmkmk"
     const header = document.querySelector('header'),
     logo = header.querySelector('.logo'),
     p = document.createElement('p')
@@ -567,7 +579,7 @@ console.log(saluer('Lou'))
     
 
     let interval = setInterval(() => {
-        
+
         p.innerText = i
         if(i <=  0){
             clearInterval(interval)
@@ -579,7 +591,43 @@ console.log(saluer('Lou'))
 
  }
 
- setChrono(25)
+ //setChrono(25)
+
+
+console.log(liens)
+
+
+// liens[0].addEventListener('click', e=>{
+//      e.preventDefault()
+//      alert('jai cliqué !')
+// })
+
+function removeActiveLink(){
+    liens.forEach(function(a){
+        a.classList.remove('active')
+    })
+}
+
+
+liens.forEach(a=>{
+    a.addEventListener('click', e=>{
+        e.preventDefault()
+        // console.log(e.pageX)
+        //e.target.href = e.target.dataset.path
+        removeActiveLink()
+        e.target.classList.add('active')
+
+    })
+})
+
+const cursor = document.querySelector('#cursor')
+
+document.addEventListener('mousemove', e=>{
+    cursor.style.left = e.clientX+'px'
+    cursor.style.top = e.clientY+'px'
+
+})
+
     
 
 
