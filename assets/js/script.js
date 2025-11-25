@@ -633,4 +633,38 @@ document.addEventListener('mousemove', e=>{
 
 //console.log(nav)
 
+function sliderFading(_time = 5){
+    const slider = document.querySelector('.slider-fading'),
+    slides = slider.querySelectorAll('.slide')
+
+    let index = 0
+
+    arrows(index, slider)
+    setInterval(()=>{
+        index++
+        slides[index].classList.remove('visible')
+        if(slides.length - 1 < index) index = 0
+        slides[index].classList.add('visible')
+    }, _time * 1000)
+
+}
+
+
+// function autoplay(_slides, i){
+        
+// }
+
+function arrows(_index, _slider){
+   const arrowsWrapper = _slider.querySelector('.arrows')
+   arrowsWrapper.addEventListener('click', e=>{
+    e.preventDefault()
+    if(e.target.matches('.icon-arrow')){
+        alert(e.target)
+     }
+    
+     
+   })
+}
+
+sliderFading()
 

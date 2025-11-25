@@ -233,6 +233,19 @@ h1{
 
 }
 
+.icon-arrow{
+    -webkit-mask: url('data:image/svg+xml,<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M20 .755l-14.374 11.245 14.374 11.219-.619.781-15.381-12 15.391-12 .609.755z"/></svg>');
+    position: relative;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    background: var(--white);
+
+}
+
+
+
+
 .icon-facebook.small,
 .icon-instagram.small{
     transform: scale(.8);
@@ -323,18 +336,21 @@ header a{
 
 header nav a::after{
     content: '';
-    width: 100%;
+    width: 0%;
     position: absolute;
-    left:-100%;
+    left:100%;
     bottom: 0px;
     height: 5px;
     background-color: var(--black);
-    transition: left .3s ease;
+    transition: left .3s ease,
+    width .1s ease .4s;
 }
 
 header nav a:hover::after,
 header nav a.active::after{
+    transition: width .3s ease;
     left:0;
+    width: 100%;
 }
 
 header .hbg{
@@ -354,7 +370,50 @@ header .hbg span{
     background-color: var(--black);
 }
 
+/* SLIDER */
+.slider-fading{
+    height: 100%;
+    position: relative;
+    --arrow-px-border:50px;
 
+    .arrow{
+        display: flex;
+        align-items: center;
+        position: absolute;
+        z-index: 5;
+        height: fit-content;
+        top:0;
+        bottom: 0;
+        margin-block: auto;
+
+        &.left{
+            left:var(--arrow-px-border);
+        }
+
+        &.right{
+            right: var(--arrow-px-border);
+            transform: rotate(180deg);
+        }
+
+    }
+
+    .slide{
+        height: 100%;
+        width: 100%;
+        inset: 0;
+        display: flex;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        opacity: 0;
+        transition: opacity .5s ease;
+
+        &.visible{
+            opacity: 1;
+        }
+    }
+}
 
 
 /* SECTION HERO */
@@ -362,10 +421,8 @@ header .hbg span{
 .hero{
     height: 50vw;
     min-height: 600px;
-    display: flex;
-    align-items: center;
-    text-align: center;
     color: var(--white);
+    padding: 0;
 }
 
 
