@@ -483,7 +483,13 @@ const isPremium = true
 
 
 const header = document.querySelector('header')
+const hbg = header.querySelector('.hbg')
 const nav = header.querySelector('nav')
+
+hbg.addEventListener('click', e=>{
+    e.preventDefault()
+    header.classList.toggle('open')
+})
 
 
 const a = document.createElement('a')
@@ -628,43 +634,139 @@ document.addEventListener('mousemove', e=>{
 
 })
 
+
+/**
+ * Raccourci de querySelector
+ * 
+ * @param {String} _elems elements à sélectionner
+ * @param {Null | HtmlElement} _parent Element dans lequel se trouve le/les éléments à selectionner
+ * @returns 
+ */
+function get(_elems,_parent = null){
+    const elems = _parent === null ? document.querySelectorAll(_elems) :
+         _parent.querySelectorAll(_elems)
+
+    if( elems.length === 1 ) return elems[0]
+    return elems
+}
     
 
 
 //console.log(nav)
 
-function sliderFading(_time = 5){
+function sliderFading(_options = {}){
+
     const slider = document.querySelector('.slider-fading'),
-    slides = slider.querySelectorAll('.slide')
+    slides = slider.querySelectorAll('.slide'),
+    options = {time:5,puces:false,autoplay:false,..._options}
 
-    let index = 0
+    let index = 0,
+    puces,
+    timeout
 
-    arrows(index, slider)
-    setInterval(()=>{
-        index++
-        slides[index].classList.remove('visible')
+
+    if(options.autoplay) autoplay()
+    arrows()
+    if(options.puces) setPuces()
+
+    //console.log(puces)
+
+
+    //Helpers
+
+    function shiftSlide(_index){
+        index = _index
+        slides.forEach( (slide,i) =>{
+            slide.classList.remove('visible')
+            if(options.puces) puces[i].classList.remove('active')
+        })
         if(slides.length - 1 < index) index = 0
+        if(0 > index) index = slides.length - 1
         slides[index].classList.add('visible')
-    }, _time * 1000)
+        puces[index].classList.add('active')
+    }
 
-}
+    function autoplay(){
+       timeout =  setTimeout(()=>{
+            shiftSlide(++index)
+            autoplay()
+        }, options.time * 1000)
+    }
+
+    function pause(){
+        if(!options.autoplay) return
+        clearTimeout(timeout)
+        autoplay()
+    }
 
 
-// function autoplay(_slides, i){
+
+    function arrows(){
+       const arrowsContainer = get('.arrows',slider),
+       arrows = arrowsContainer.querySelectorAll('.arrow')
+
+       arrows.forEach( function(arrow){
+            arrow.addEventListener('click', function(e){
+                e.preventDefault()
+                pause()
+                const clickedArrow = e.currentTarget
+
+                // let y = 1===1 ? 5 : 6
+                //clickedArrow.classList.contains('left') ? index-- : index++
+
+                if(clickedArrow.classList.contains('left')) index--
+                    else index++
+
+                shiftSlide(index)
+            })
+       })
+ 
+    }
+
+
+    function setPuces(){
+
+        const pucesContainer = document.createElement('div')
+        pucesContainer.classList.add('puces-wrapper')
+
+        const fragment = document.createDocumentFragment()
+        for (let index = 0; index < slides.length; index++) {
+            const div = document.createElement('div')
+            div.classList.add('puce')
+            if(index === 0) div.classList.add('active')
+            div.dataset.index = index
+            fragment.append(div)
+        }
+
         
-// }
 
-function arrows(_index, _slider){
-   const arrowsWrapper = _slider.querySelector('.arrows')
-   arrowsWrapper.addEventListener('click', e=>{
-    e.preventDefault()
-    if(e.target.matches('.icon-arrow')){
-        alert(e.target)
-     }
+        pucesContainer.addEventListener('click', e =>{
+            const clickedElement = e.target
+            if( clickedElement.matches('.puce') ){
+                pause()
+                const indexNumber = Number(clickedElement.dataset.index)
+                shiftSlide(indexNumber)
+            }
+        })
+
+        pucesContainer.append(fragment)
+        puces = pucesContainer.querySelectorAll('div')
+
+        slider.append(pucesContainer)
+    }
+
+ 
     
-     
-   })
+
+
+
+
+
 }
 
-sliderFading()
+
+
+
+
+sliderFading({puces:true, autoplay:true})
 
