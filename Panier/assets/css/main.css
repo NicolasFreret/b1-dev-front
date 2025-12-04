@@ -154,31 +154,34 @@ section.cart {
 		grid-template-rows: 1fr;
 	}
 
-	.close{
-		
+	.close,
+	.pay{
+		display: flex;
+        align-items: center;
+        justify-content: center;
 
 		&::after{
 			content: '';
 			position: absolute;
-			left:0;
 			width: 50%;
 			height: 100%;
-			background-color: lightgrey;
 			z-index: -1;
+		}
+
+	}
+
+	.close{
+		&::after{
+			left:0;
+			background-color: lightgrey;
 		}
 		
 	}
 
 	.pay{
 
-
 		&::after{
-			content: '';
-			z-index: -1;
-			position: absolute;
 			right: 0;
-			width: 50%;
-			height: 100%;
 			background-color: #FFA500;
 		}
 		
