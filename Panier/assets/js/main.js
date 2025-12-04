@@ -1,10 +1,19 @@
-const header = document.querySelector('header'),
-cart = header.querySelector('.cart')
+const body = document.body,
+header = body.querySelector('header'),
+cart = header.querySelector('.cart'),
+cartContainer = body.querySelector('section.cart'),
+close_cart_content = cartContainer.querySelector('.close_cart_content')
 
-cart.addEventListener('click', function(e){
+
+
+cart.addEventListener('click', e =>  toggleCart(e))
+close_cart_content.addEventListener('click', e =>  toggleCart(e))
+
+function toggleCart(e){
     e.preventDefault()
-    document.body.classList.toggle('open')
-})
+    let isOpen = body.classList.toggle('open')
+    cartContainer.ariaExpanded = isOpen
+}
 
 
 /**

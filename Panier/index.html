@@ -12,32 +12,56 @@
 			<div class="logo">
 					LOGO
 			</div>
-			<div class="cart">
+			<a href="#" aria-controls="cart-container" class="cart">
 				<span class="icon-cart"></span>
 				<div class="nbItem">
 					0
 				</div>
-			</div>
+			</a>
 		</div>
 	</header>
 	<main>
-		<section class="cart">
+		<section id="cart-container" aria-expanded="false" class="cart">
 			<div class="title">
 				PANIER
 			</div>
 			<div class="cartContent">
-				ldkfhldskqhflkdsflkdhs!kflkghldfskghkldfshglkdfh
+				<div class="item">
+					<div class="item_trash">
+						T
+					</div>
+					<div class="item_img">
+						<img src="assets/images/1.png" alt="">
+					</div>
+					<div class="item_title">
+						LD02 LOUNGE CHAIR
+					</div>
+					<div class="item_price">
+						250€
+					</div>
+					<div class="item_qty">
+						<div tabindex="1" aria-label="retirer une quantitté" class="item_qty_button less">
+							-
+						</div>
+						<div class="item_qty_value">
+							0
+						</div>
+						<div tabindex="1" aria-label="ajouter une quantitté" class="item_qty_button plus">
+							+
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="total">
 				<p>
-					kljklj
+					TOTAL
 				</p>
 				<p>
 					0€
 				</p>
 			</div>
 			<div class="close_pay">
-				<div class="close">
+				<div class="close close_cart_content">
 					FERMER
 				</div>
 				<div class="pay">

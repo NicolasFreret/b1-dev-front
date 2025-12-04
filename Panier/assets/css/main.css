@@ -160,6 +160,7 @@ section.cart {
         align-items: center;
         justify-content: center;
 		color: black;
+		cursor: pointer;
 
 		&::after{
 			content: '';
@@ -181,6 +182,33 @@ section.cart {
 	.pay::after{
 		right: 0;
 		background-color: #FFA500;
+	}
+
+	.item{
+		display: grid;
+		grid-template-columns: 50px 100px 1fr 80px 100px;
+        place-items: center;
+	}
+
+	.item_img img{
+		width: 80%;
+	}
+
+	.item_qty{
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.item_qty_button{
+		height: 20px;
+		aspect-ratio: 1;
+		background-color: grey;
+		border-radius: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
 	}
 }
 
