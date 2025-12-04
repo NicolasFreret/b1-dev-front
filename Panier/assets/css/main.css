@@ -159,6 +159,7 @@ section.cart {
 		display: flex;
         align-items: center;
         justify-content: center;
+		color: black;
 
 		&::after{
 			content: '';
@@ -170,22 +171,16 @@ section.cart {
 
 	}
 
-	.close{
-		&::after{
-			left:0;
-			background-color: lightgrey;
-		}
-		
+	.close::after{
+		left:0;
+		background-color: #D3D3D3;
 	}
-
-	.pay{
-
-		&::after{
-			right: 0;
-			background-color: #FFA500;
-		}
 		
+	
 
+	.pay::after{
+		right: 0;
+		background-color: #FFA500;
 	}
 }
 
