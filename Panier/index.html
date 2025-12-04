@@ -25,33 +25,7 @@
 			<div class="title">
 				PANIER
 			</div>
-			<div class="cartContent">
-				<div class="item">
-					<div class="item_trash">
-						T
-					</div>
-					<div class="item_img">
-						<img src="assets/images/1.png" alt="">
-					</div>
-					<div class="item_title">
-						LD02 LOUNGE CHAIR
-					</div>
-					<div class="item_price">
-						250€
-					</div>
-					<div class="item_qty">
-						<div tabindex="1" aria-label="retirer une quantitté" class="item_qty_button less">
-							-
-						</div>
-						<div class="item_qty_value">
-							0
-						</div>
-						<div tabindex="1" aria-label="ajouter une quantitté" class="item_qty_button plus">
-							+
-						</div>
-					</div>
-				</div>
-			</div>
+			<div class="cartContent" aria-live="polite"></div>
 			<div class="total">
 				<p>
 					TOTAL
@@ -61,9 +35,9 @@
 				</p>
 			</div>
 			<div class="close_pay">
-				<div class="close close_cart_content">
+				<a href="#" aria-controls="cart-container" class="close close_cart_content">
 					FERMER
-				</div>
+				</a>
 				<div class="pay">
 					PAYER
 				</div>
@@ -73,10 +47,9 @@
 
 		<section class="products">
 			<div class="container">
-				<div class="row productsContainer"></div>
+				<div aria-live="polite" class="row productsContainer"></div>
 			</div>
 		</section>
-
 
 
 
@@ -87,10 +60,34 @@
 						</figure>
 						<h1></h1>
 						<p class="price"></p>
-						<a href="#" class="btn">
+						<a href="#" class="btn addToCart">
 							Ajouter au panier
 						</a>
 			</article>
+		</template>
+
+		<template id="item-cart">
+			<div class="item">
+					<div class="item_trash">
+						T
+					</div>
+					<div class="item_img">
+						<img src="" alt="">
+					</div>
+					<div class="item_title"></div>
+					<div class="item_price"></div>
+					<div class="item_qty">
+						<div tabindex="1" aria-label="retirer une quantitté" class="item_qty_button less">
+							-
+						</div>
+						<div class="item_qty_value">
+							1
+						</div>
+						<div tabindex="1" aria-label="ajouter une quantitté" class="item_qty_button plus">
+							+
+						</div>
+					</div>
+				</div>
 		</template>
 		
 	</main>
