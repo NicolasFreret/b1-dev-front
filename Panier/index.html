@@ -31,7 +31,7 @@
 					TOTAL
 				</p>
 				<p>
-					0€
+					<span class="cart_total">0</span>€
 				</p>
 			</div>
 			<div class="close_pay">
@@ -68,22 +68,22 @@
 
 		<template id="item-cart">
 			<div class="item">
-					<div class="item_trash">
-						T
-					</div>
+					<a aria-label="Supprimer l'article du panier" href="#" class="item_trash">
+						<span class="icon-trash"></span>
+					</a>
 					<div class="item_img">
 						<img src="" alt="">
 					</div>
 					<div class="item_title"></div>
 					<div class="item_price"></div>
 					<div class="item_qty">
-						<div tabindex="1" aria-label="retirer une quantitté" class="item_qty_button less">
+						<div tabindex="1" aria-label="retirer une quantitté" class="item_qty_button">
 							-
 						</div>
 						<div class="item_qty_value">
 							1
 						</div>
-						<div tabindex="1" aria-label="ajouter une quantitté" class="item_qty_button plus">
+						<div tabindex="1" aria-label="ajouter une quantitté" class="item_qty_button add">
 							+
 						</div>
 					</div>
